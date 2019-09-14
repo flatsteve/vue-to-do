@@ -1,9 +1,5 @@
 <template>
-  <div class="home">
-    <h1>Vue playground</h1>
-
-    <Todo />
-  </div>
+  <Todo />
 </template>
 
 <script>
