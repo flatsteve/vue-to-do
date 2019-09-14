@@ -1,6 +1,11 @@
 <template>
   <div class="hello">
     <div v-for="todo in todos" :key="todo.id">{{todo.description}}</div>
+
+    <div>
+      <input type="text" v-model="description" />
+      <button @click="addTodo" :disabled="!description">Add todo</button>
+    </div>
   </div>
 </template>
 
@@ -9,6 +14,14 @@ import { mapState } from "vuex";
 
 export default {
   name: "Todo",
+  data: () => ({
+    description: "Test"
+  }),
+  methods: {
+    addTodo() {
+      this.$store.commit({ type: "addTodo", description: this.description });
+    }
+  },
   computed: mapState(["todos"])
 };
 </script>
