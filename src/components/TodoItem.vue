@@ -1,5 +1,5 @@
 <template>
-  <div class="todo">
+  <div class="todo" v-bind:class="{'todo--checked': todo.checked}">
     <h4 class="todo__description">{{todo.description}}</h4>
 
     <CustomCheckbox @checked="checkTodo" :id="todo.id" :checked="todo.checked" />
@@ -27,6 +27,10 @@ export default {
   display: flex;
   justify-content: space-between;
   padding: 1.25rem;
+
+  &--checked .todo__description {
+    text-decoration: line-through;
+  }
 
   &__description {
     margin: 0;
