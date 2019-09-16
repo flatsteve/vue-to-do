@@ -36,5 +36,6 @@
 .app__container {
   margin: 0 auto;
   max-width: 50rem;
+  padding: 0 1.25rem;
 }
 </style>
