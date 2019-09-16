@@ -44,10 +44,6 @@ export default {
 
   &:hover {
     cursor: pointer;
-
-    &:before {
-      background-color: $green;
-    }
   }
 
   &:before {

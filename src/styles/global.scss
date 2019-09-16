@@ -1,0 +1,15 @@
+input[type="text"] {
+  border: 2px solid $blue;
+  border-radius: 0.25rem;
+  padding: 0.75rem;
+  transition: border 0.3s ease-in;
+
+  &:focus {
+    border-color: darken($blue, 25%);
+  }
+}
+
+input,
+button {
+  outline: none;
+}

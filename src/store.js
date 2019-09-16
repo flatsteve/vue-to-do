@@ -23,6 +23,20 @@ export default new Vuex.Store({
       });
 
       todo.checked = !todo.checked;
+    },
+
+    removeTodo(state, payload) {
+      state.todos = state.todos.filter(todo => {
+        return todo.id !== payload.id;
+      });
+    },
+
+    editTodo(state, payload) {
+      const todo = state.todos.find(todo => {
+        return todo.id === payload.id;
+      });
+
+      todo.description = payload.description;
     }
   },
 

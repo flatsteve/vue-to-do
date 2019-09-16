@@ -3,6 +3,14 @@
     <h1 class="todo-title">Get shit done</h1>
 
     <div class="todo-container">
+      <div v-show="!orderedTodos.length" class="todo-empty">
+        <h3>Don't you have anything to do?</h3>
+
+        <p>Nice, go read a book or something...</p>
+
+        <p>Or you could add a todo below.</p>
+      </div>
+
       <TodoItem v-for="todo in orderedTodos" :key="todo.id" :todo="todo" />
     </div>
 
@@ -11,7 +19,7 @@
         <input
           v-model="description"
           type="text"
-          placeholder="e.g. eat that frog"
+          placeholder="e.g. Eat that frog"
         />
         <button :disabled="!description" @click="addTodo">Add todo</button>
       </div>
@@ -25,9 +33,9 @@ import TodoItem from "./TodoItem";
 export default {
   name: "Todo",
   components: { TodoItem },
-  data: () => ({
-    description: ""
-  }),
+  data() {
+    return { description: "" };
+  },
   computed: {
     orderedTodos() {
       return this.$store.state.todos.reduce((acc, todo) => {
@@ -66,12 +74,6 @@ export default {
     margin-left: auto;
   }
 
-  input {
-    border: 2px solid $blue;
-    border-radius: 0.25rem;
-    padding: 0.75rem;
-  }
-
   button {
     background-color: $pink;
     border-radius: 0.25rem;
@@ -88,5 +90,9 @@ export default {
   border: 2px solid $blue;
   border-radius: 1.25rem;
   margin-bottom: 1.75rem;
+}
+
+.todo-empty {
+  padding: 1.25rem;
 }
 </style>

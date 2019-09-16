@@ -13,7 +13,9 @@
 
 <style lang="scss">
 @import url("~normalize.css");
+
 @import "./styles/colors";
+@import "./styles/global";
 
 * {
   box-sizing: border-box;
