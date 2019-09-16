@@ -6,14 +6,11 @@
         ref="editDescription"
         v-model="editDescription"
         type="text"
+        @keyup.enter="() => editTodo(todo.id)"
         @blur="() => editTodo(todo.id)"
       />
 
-      <h4
-        v-show="!edit"
-        class="todo-item__description"
-        @click="enableEditTodo - item"
-      >
+      <h4 v-show="!edit" class="todo-item__description" @click="enableEditTodo">
         {{ todo.description }}
       </h4>
     </div>
@@ -100,7 +97,13 @@ export default {
     &__delete {
       fill: $pink;
       margin-right: 1.25rem;
+      transition: all 0.3s ease-in;
       width: 1rem;
+
+      &:hover {
+        cursor: pointer;
+        fill: darken($pink, 20%);
+      }
     }
   }
 
