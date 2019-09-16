@@ -1,8 +1,12 @@
 <template>
-  <div class="todo" v-bind:class="{'todo--checked': todo.checked}">
-    <h4 class="todo__description">{{todo.description}}</h4>
+  <div class="todo" :class="{ 'todo--checked': todo.checked }">
+    <h4 class="todo__description">{{ todo.description }}</h4>
 
-    <CustomCheckbox @checked="checkTodo" :id="todo.id" :checked="todo.checked" />
+    <CustomCheckbox
+      :id="todo.id"
+      :checked="todo.checked"
+      @checked="checkTodo"
+    />
   </div>
 </template>
 
@@ -11,8 +15,13 @@ import CustomCheckbox from "./CustomCheckbox";
 
 export default {
   name: "TodoItem",
-  props: ["todo"],
   components: { CustomCheckbox },
+  props: {
+    todo: {
+      default: () => [],
+      type: [Array, Object]
+    }
+  },
   methods: {
     checkTodo(id) {
       this.$store.commit({ type: "checkTodo", id });

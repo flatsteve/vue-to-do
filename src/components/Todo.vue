@@ -3,41 +3,50 @@
     <h1 class="todo-title">Get shit done</h1>
 
     <div class="todo-container">
-      <TodoItem v-for="todo in todos" :key="todo.id" :todo="todo" />
+      <TodoItem v-for="todo in orderedTodos" :key="todo.id" :todo="todo" />
     </div>
 
     <div class="todo-add">
       <div class="todo-add__controls">
-        <input type="text" v-model="description" placeholder="e.g. eat that frog" />
-        <button @click="addTodo" :disabled="!description">Add todo</button>
+        <input
+          v-model="description"
+          type="text"
+          placeholder="e.g. eat that frog"
+        />
+        <button :disabled="!description" @click="addTodo">Add todo</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
-
 import TodoItem from "./TodoItem";
 
 export default {
   name: "Todo",
+  components: { TodoItem },
   data: () => ({
     description: ""
   }),
-
+  computed: {
+    orderedTodos() {
+      return this.$store.state.todos.reduce((acc, todo) => {
+        if (todo.checked === false) {
+          return [todo, ...acc];
+        }
+        return [...acc, todo];
+      }, []);
+    }
+  },
   methods: {
     addTodo() {
       this.$store.commit({ type: "addTodo", description: this.description });
       this.description = "";
     }
-  },
-  computed: mapState(["todos"]),
-  components: { TodoItem }
+  }
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 @import "../styles/colors";
 

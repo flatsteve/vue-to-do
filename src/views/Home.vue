@@ -6,7 +6,7 @@
 import Todo from "@/components/Todo.vue";
 
 export default {
-  name: "home",
+  name: "Home",
   components: {
     Todo
   }

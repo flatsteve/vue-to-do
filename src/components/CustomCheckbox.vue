@@ -1,10 +1,10 @@
 <template>
   <div>
     <input
+      :id="`checkbox-${id}`"
       class="checkbox"
       type="checkbox"
       :name="id"
-      :id="`checkbox-${id}`"
       :checked="checked"
       @change="change"
     />
@@ -15,7 +15,15 @@
 <script>
 export default {
   name: "CustomCheckbox",
-  props: ["checked", "id"],
+  props: {
+    checked: {
+      type: Boolean
+    },
+    id: {
+      default: "0",
+      type: String
+    }
+  },
   methods: {
     change: function(event) {
       this.$emit("checked", event.target.name);
