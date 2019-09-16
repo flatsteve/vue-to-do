@@ -15,7 +15,7 @@
     </div>
 
     <div class="todo-add">
-      <div class="todo-add__controls">
+      <form class="todo-add__controls">
         <input
           v-model="description"
           type="text"
@@ -25,9 +25,10 @@
           :disabled="!description"
           :on-click="addTodo"
           class="todo-add__button"
+          type="submit"
           >Add todo</Button
         >
-      </div>
+      </form>
     </div>
   </div>
 </template>
@@ -53,7 +54,9 @@ export default {
     }
   },
   methods: {
-    addTodo() {
+    addTodo(e) {
+      e.preventDefault();
+
       this.$store.commit({ type: "addTodo", description: this.description });
       this.description = "";
     }
