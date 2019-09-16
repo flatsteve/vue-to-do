@@ -21,7 +21,12 @@
           type="text"
           placeholder="e.g. Eat that frog"
         />
-        <button :disabled="!description" @click="addTodo">Add todo</button>
+        <Button
+          :disabled="!description"
+          :on-click="addTodo"
+          class="todo-add__button"
+          >Add todo</Button
+        >
       </div>
     </div>
   </div>
@@ -29,10 +34,11 @@
 
 <script>
 import TodoItem from "./TodoItem";
+import Button from "./Button";
 
 export default {
   name: "Todo",
-  components: { TodoItem },
+  components: { TodoItem, Button },
   data() {
     return { description: "" };
   },
@@ -60,6 +66,7 @@ export default {
 
 .todo {
   flex: 1;
+  padding: 1.25rem 0;
 }
 
 .todo-title {
@@ -69,19 +76,13 @@ export default {
 .todo-add {
   display: flex;
 
+  &__button {
+    margin-left: 0.75rem;
+  }
+
   &__controls {
     display: flex;
     margin-left: auto;
-  }
-
-  button {
-    background-color: $pink;
-    border-radius: 0.25rem;
-    border: none;
-    color: $white;
-    font-weight: bold;
-    margin-left: 0.75rem;
-    padding: 0.75rem 1rem;
   }
 }
 

@@ -2,11 +2,6 @@
   <div id="app">
     <div class="app__container">
       <router-view />
-
-      <div id="nav">
-        <router-link to="/">Todos</router-link>
-        <router-link to="/about">Settings</router-link>
-      </div>
     </div>
   </div>
 </template>
@@ -16,10 +11,6 @@
 
 @import "./styles/colors";
 @import "./styles/global";
-
-* {
-  box-sizing: border-box;
-}
 
 #app {
   background-image: linear-gradient(
@@ -40,25 +31,10 @@
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   color: #2c3e50;
   min-height: 100vh;
-  padding: 1.25rem;
 }
 
 .app__container {
   margin: 0 auto;
   max-width: 50rem;
-}
-
-#nav {
-  margin-top: 2.5rem;
-
-  a {
-    font-weight: bold;
-    color: $white;
-    margin: 0 10px;
-
-    &.router-link-exact-active {
-      color: $pink;
-    }
-  }
 }
 </style>

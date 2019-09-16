@@ -1,5 +1,5 @@
 <template>
-  <div class="todo" :class="{ 'todo--checked': todo.checked }">
+  <div class="todo-item" :class="{ 'todo-item--checked': todo.checked }">
     <div>
       <input
         v-show="edit"
@@ -9,15 +9,19 @@
         @blur="() => editTodo(todo.id)"
       />
 
-      <h4 v-show="!edit" class="todo__description" @click="enableEditTodo">
+      <h4
+        v-show="!edit"
+        class="todo-item__description"
+        @click="enableEditTodo - item"
+      >
         {{ todo.description }}
       </h4>
     </div>
 
-    <div class="todo__actions">
+    <div class="todo-item__actions">
       <BinIcon
-        v-if="todo.checked"
-        class="todo__actions__delete"
+        v-show="todo.checked"
+        class="todo-item__actions__delete"
         @click="() => removeTodo(todo.id)"
       />
 
@@ -80,13 +84,13 @@ export default {
 <style scoped lang="scss">
 @import "../styles/colors";
 
-.todo {
+.todo-item {
   align-items: center;
   display: flex;
   justify-content: space-between;
   padding: 1.25rem;
 
-  &--checked .todo__description {
+  &--checked .todo-item__description {
     text-decoration: line-through;
   }
 
