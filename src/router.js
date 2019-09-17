@@ -5,7 +5,6 @@ import * as firebase from "firebase/app";
 import Home from "./views/Home.vue";
 import Login from "./views/Login.vue";
 import Signup from "./views/Signup.vue";
-import { nextTick } from "q";
 
 Vue.use(Router);
 
