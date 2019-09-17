@@ -20,7 +20,7 @@
 
       <p>
         Don't have an account?
-        <router-link to="/signup">Sing up here</router-link>
+        <router-link to="/signup">Sign up here</router-link>
       </p>
     </form>
   </div>
@@ -50,8 +50,8 @@ export default {
       firebase
         .auth()
         .signInWithEmailAndPassword(this.email, this.password)
-        .then(user => {
-          console.log(user);
+        .then(() => {
+          this.$router.replace("todo");
         })
         .catch(err => {
           this.error = err.message;

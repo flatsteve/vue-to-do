@@ -48,8 +48,8 @@ export default {
       firebase
         .auth()
         .createUserWithEmailAndPassword(this.email, this.password)
-        .then(user => {
-          console.log(user);
+        .then(() => {
+          this.$router.replace("todo");
         })
         .catch(err => {
           this.error = err.message;

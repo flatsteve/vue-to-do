@@ -1,6 +1,10 @@
 <template>
   <div class="todo">
-    <h1 class="todo-title">Get shit done</h1>
+    <div class="header">
+      <h2 class="header__title">Get things done</h2>
+
+      <User />
+    </div>
 
     <div class="todo-container">
       <div v-show="!orderedTodos.length" class="todo-empty">
@@ -35,11 +39,12 @@
 
 <script>
 import TodoItem from "./TodoItem";
+import User from "./User";
 import Button from "./Button";
 
 export default {
   name: "Todo",
-  components: { TodoItem, Button },
+  components: { TodoItem, Button, User },
   data() {
     return { description: "" };
   },
@@ -67,13 +72,16 @@ export default {
 <style scoped lang="scss">
 @import "../styles/colors";
 
-.todo {
-  flex: 1;
-  padding: 1.25rem 0;
-}
+.header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 2.5rem 0;
 
-.todo-title {
-  color: $white;
+  &__title {
+    color: $white;
+    margin: 0;
+  }
 }
 
 .todo-add {
