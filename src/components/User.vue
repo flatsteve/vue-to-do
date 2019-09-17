@@ -1,5 +1,5 @@
 <template>
-  <div class="user">
+  <div v-click-outside="hideShowAccount" class="user">
     <div class="user__name" @click="toggleShowAccount">info@flatsteve.com</div>
 
     <div v-show="showAccount" class="user__menu">
@@ -23,6 +23,9 @@ export default {
   methods: {
     toggleShowAccount() {
       this.showAccount = !this.showAccount;
+    },
+    hideShowAccount() {
+      this.showAccount = false;
     },
     signOut() {
       firebase

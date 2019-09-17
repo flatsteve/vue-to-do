@@ -2,12 +2,14 @@ import Vue from "vue";
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/database";
+import vClickOutside from "v-click-outside";
 
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import "./registerServiceWorker";
 
+Vue.use(vClickOutside);
 Vue.config.productionTip = false;
 
 let app;
