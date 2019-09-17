@@ -17,8 +17,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../styles/colors";
-
 button {
   background-color: $pink;
   border-radius: 0.25rem;

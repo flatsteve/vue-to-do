@@ -79,8 +79,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../styles/colors";
-
 .todo-item {
   align-items: center;
   display: flex;

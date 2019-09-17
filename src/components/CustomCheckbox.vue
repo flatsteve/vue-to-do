@@ -33,8 +33,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../styles/colors";
-
 .checkbox {
   display: none;
 }

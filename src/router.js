@@ -2,7 +2,7 @@ import Vue from "vue";
 import Router from "vue-router";
 import * as firebase from "firebase/app";
 
-import Home from "./views/Home.vue";
+import Todos from "./views/Todos.vue";
 import Login from "./views/Login.vue";
 import Signup from "./views/Signup.vue";
 
@@ -31,9 +31,9 @@ const router = new Router({
       component: Signup
     },
     {
-      path: "/todo",
-      name: "todo",
-      component: Home,
+      path: "/todos",
+      name: "todos",
+      component: Todos,
       meta: {
         requiresAuth: true
       }

@@ -6,6 +6,11 @@ module.exports = {
     svgRule.use("vue-svg-loader").loader("vue-svg-loader");
   },
   css: {
-    sourceMap: true
+    sourceMap: true,
+    loaderOptions: {
+      sass: {
+        prependData: `@import "@/styles/colors.scss";`
+      }
+    }
   }
 };

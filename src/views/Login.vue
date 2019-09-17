@@ -18,7 +18,7 @@
         >Login</Button
       >
 
-      <p>
+      <p class="login__link">
         Don't have an account?
         <router-link to="/signup">Sign up here</router-link>
       </p>
@@ -51,7 +51,7 @@ export default {
         .auth()
         .signInWithEmailAndPassword(this.email, this.password)
         .then(() => {
-          this.$router.replace("todo");
+          this.$router.replace("todos");
         })
         .catch(err => {
           this.error = err.message;
@@ -62,8 +62,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../styles/colors";
-
 .login {
   align-items: center;
   display: flex;
@@ -79,6 +77,14 @@ export default {
   &__button {
     margin-top: 0.25rem;
     width: 100%;
+  }
+
+  &__link {
+    text-align: center;
+
+    a {
+      color: $white;
+    }
   }
 }
 

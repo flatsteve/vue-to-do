@@ -1,13 +1,13 @@
 <template>
-  <div class="todo">
+  <div class="todos">
     <div class="header">
       <h2 class="header__title">Get things done</h2>
 
       <User />
     </div>
 
-    <div class="todo-container">
-      <div v-show="!orderedTodos.length" class="todo-empty">
+    <div class="todos-container">
+      <div v-show="!orderedTodos.length" class="todos-empty">
         <h3>Don't you have anything to do?</h3>
 
         <p>Nice, go read a book or something...</p>
@@ -18,8 +18,8 @@
       <TodoItem v-for="todo in orderedTodos" :key="todo.id" :todo="todo" />
     </div>
 
-    <div class="todo-add">
-      <form class="todo-add__controls">
+    <div class="todos-add">
+      <form class="todos-add__controls">
         <input
           v-model="description"
           type="text"
@@ -28,7 +28,7 @@
         <Button
           :disabled="!description"
           :on-click="addTodo"
-          class="todo-add__button"
+          class="todos-add__button"
           type="submit"
           >Add todo</Button
         >
@@ -38,12 +38,12 @@
 </template>
 
 <script>
-import TodoItem from "./TodoItem";
-import User from "./User";
-import Button from "./Button";
+import TodoItem from "../components/TodoItem";
+import User from "../components/User";
+import Button from "../components/Button";
 
 export default {
-  name: "Todo",
+  name: "Todos",
   components: { TodoItem, Button, User },
   data() {
     return { description: "" };
@@ -70,8 +70,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../styles/colors";
-
 .header {
   align-items: center;
   display: flex;
@@ -84,7 +82,7 @@ export default {
   }
 }
 
-.todo-add {
+.todos-add {
   display: flex;
 
   &__button {
@@ -97,14 +95,14 @@ export default {
   }
 }
 
-.todo-container {
+.todos-container {
   background-color: $white;
   border: 2px solid $blue;
   border-radius: 1.25rem;
   margin-bottom: 1.75rem;
 }
 
-.todo-empty {
+.todos-empty {
   padding: 1.25rem;
 }
 </style>
