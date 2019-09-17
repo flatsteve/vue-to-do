@@ -16,12 +16,16 @@ self.__precacheManifest = [
     "url": "/vue-to-do/js/chunk-vendors.42c7a7b4.js"
   },
   {
-    "revision": "e2201a3487ecd5899696ca9c7dbddc94",
+    "revision": "163a782d187241506d7f11b7d6bbd07a",
     "url": "/vue-to-do/index.html"
   },
   {
     "revision": "70ce796a6a13ba47b37f720b895d5794",
     "url": "/vue-to-do/svg/bin.svg"
+  },
+  {
+    "revision": "728793cf5da12a205d4ffcb3d0d6c4e0",
+    "url": "/vue-to-do/404.html"
   },
   {
     "revision": "b6216d61c03e6ce0c9aea6ca7808f7ca",
