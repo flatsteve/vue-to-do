@@ -1,13 +1,13 @@
 <template>
   <div class="login">
-    <h2 class="login__title">Signup to get started</h2>
+    <h2 class="login__title">Sign up to get started</h2>
 
     <form>
       <label>Email</label>
       <input v-model="email" type="text" placeholder="e.g. joe@bananas.com" />
 
       <label>Password</label>
-      <input v-model="password" type="text" placeholder="Your password" />
+      <input v-model="password" type="password" placeholder="Your password" />
 
       <p v-show="error">{{ error }}</p>
 
@@ -15,7 +15,7 @@
         :on-click="signup"
         :disabled="!email || !password"
         class="login__button"
-        >Signup</Button
+        >Sign up</Button
       >
 
       <p class="login__link">
@@ -60,43 +60,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.login {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 100vh;
-
-  &__title {
-    color: $white;
-    margin: 0 0 2.5rem;
-  }
-
-  &__button {
-    margin-top: 0.25rem;
-    width: 100%;
-  }
-
-  &__link {
-    text-align: center;
-
-    a {
-      color: $white;
-    }
-  }
-}
-
-form {
-  max-width: 20rem;
-}
-
-label {
-  display: block;
-  margin-bottom: 0.25rem;
-}
-
-input {
-  margin-bottom: 1.25rem;
-  width: 100%;
-}
+@import "../styles/login-signup.scss";
 </style>
