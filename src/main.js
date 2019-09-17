@@ -7,7 +7,7 @@ import vClickOutside from "v-click-outside";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
-import "./registerServiceWorker";
+// import "./registerServiceWorker";
 
 Vue.use(vClickOutside);
 Vue.config.productionTip = false;
