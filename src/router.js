@@ -53,7 +53,7 @@ router.beforeEach((to, from, next) => {
   }
 
   if (!requiresAuth && currentUser) {
-    return next("todo");
+    return next("todos");
   }
 
   next();
