@@ -1,6 +1,6 @@
 <template>
   <div class="login">
-    <h2 class="login__title">Login to your account</h2>
+    <h2 class="login__title">Signup to get started</h2>
 
     <form>
       <label>Email</label>
@@ -12,15 +12,15 @@
       <p v-show="error">{{ error }}</p>
 
       <Button
-        :on-click="login"
+        :on-click="signup"
         :disabled="!email || !password"
         class="login__button"
-        >Login</Button
+        >Signup</Button
       >
 
       <p>
-        Don't have an account?
-        <router-link to="/signup">Sing up here</router-link>
+        Already got an account?
+        <router-link to="/login">Log in here</router-link>
       </p>
     </form>
   </div>
@@ -32,7 +32,7 @@ import * as firebase from "firebase/app";
 import Button from "../components/Button";
 
 export default {
-  name: "Login",
+  name: "Signup",
   components: { Button },
   data() {
     return {
@@ -42,14 +42,12 @@ export default {
     };
   },
   methods: {
-    login(e) {
+    signup(e) {
       e.preventDefault();
-
-      this.error = "";
 
       firebase
         .auth()
-        .signInWithEmailAndPassword(this.email, this.password)
+        .createUserWithEmailAndPassword(this.email, this.password)
         .then(user => {
           console.log(user);
         })
