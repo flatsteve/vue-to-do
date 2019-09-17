@@ -1,22 +1,22 @@
 self.__precacheManifest = [
   {
-    "revision": "66e5da6fc49c2a403747",
+    "revision": "952b92fc3b423e9b3723",
     "url": "/vue-to-do/css/app.81b5053f.css"
   },
   {
-    "revision": "66e5da6fc49c2a403747",
-    "url": "/vue-to-do/js/app.2e83b4de.js"
+    "revision": "952b92fc3b423e9b3723",
+    "url": "/vue-to-do/js/app.ada34069.js"
   },
   {
-    "revision": "165b1bf1455a042e9351",
+    "revision": "fbb5d21b34a66b18fb0c",
     "url": "/vue-to-do/css/chunk-vendors.20623606.css"
   },
   {
-    "revision": "165b1bf1455a042e9351",
-    "url": "/vue-to-do/js/chunk-vendors.42c7a7b4.js"
+    "revision": "fbb5d21b34a66b18fb0c",
+    "url": "/vue-to-do/js/chunk-vendors.04f67943.js"
   },
   {
-    "revision": "163a782d187241506d7f11b7d6bbd07a",
+    "revision": "a9ddd195e8dee0e92f6f19ab9ad57365",
     "url": "/vue-to-do/index.html"
   },
   {
