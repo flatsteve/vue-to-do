@@ -6,7 +6,11 @@
       <User />
     </div>
 
-    <div class="todos-container">
+    <div v-show="loading">
+      <p>Loading todos...</p>
+    </div>
+
+    <div v-show="!loading" class="todos-container">
       <div v-show="!orderedTodos.length" class="todos-empty">
         <h3>Don't you have anything to do?</h3>
 
@@ -38,6 +42,7 @@
 </template>
 
 <script>
+import { db } from "../main";
 import TodoItem from "../components/TodoItem";
 import User from "../components/User";
 import Button from "../components/Button";
@@ -46,7 +51,7 @@ export default {
   name: "Todos",
   components: { TodoItem, Button, User },
   data() {
-    return { description: "" };
+    return { description: "", loading: true };
   },
   computed: {
     orderedTodos() {
@@ -58,7 +63,20 @@ export default {
       }, []);
     }
   },
+  mounted() {
+    this.getTodos();
+  },
   methods: {
+    getTodos() {
+      db.collection("todos")
+        .doc(this.$store.state.user.id)
+        .get()
+        .then(doc => {
+          this.loading = false;
+          const { data } = doc.data();
+          this.$store.commit({ type: "receiveTodos", todos: data });
+        });
+    },
     addTodo(e) {
       e.preventDefault();
 

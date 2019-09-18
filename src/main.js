@@ -1,7 +1,7 @@
 import Vue from "vue";
 import * as firebase from "firebase/app";
 import "firebase/auth";
-import "firebase/database";
+import "firebase/firestore";
 import vClickOutside from "v-click-outside";
 
 import { firebaseConfig } from "./services/firebase";
@@ -14,6 +14,7 @@ Vue.use(vClickOutside);
 Vue.config.productionTip = false;
 
 firebase.initializeApp(firebaseConfig);
+export const db = firebase.firestore();
 
 new Vue({
   router,

@@ -1,12 +1,14 @@
 import Vue from "vue";
 import Vuex from "vuex";
 
+import { db } from "./main";
+
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
     user: null,
-    todos: JSON.parse(localStorage.getItem("app_todos")) || []
+    todos: []
   },
 
   mutations: {
@@ -16,6 +18,10 @@ const store = new Vuex.Store({
     },
 
     // Todo mutations
+    receiveTodos(state, payload) {
+      state.todos = payload.todos;
+    },
+
     addTodo(state, payload) {
       state.todos.push({
         id: Date.now().toString(),
@@ -51,7 +57,11 @@ const store = new Vuex.Store({
   plugins: [
     store => {
       store.subscribe((mutation, state) => {
-        localStorage.setItem("app_todos", JSON.stringify(state.todos));
+        if (mutation.type !== "setUser") {
+          db.collection("todos")
+            .doc(state.user.id)
+            .set({ data: state.todos });
+        }
       });
     }
   ]
