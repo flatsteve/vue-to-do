@@ -28,7 +28,7 @@ button {
   transition: all 0.3s ease-in;
 
   &:disabled {
-    opacity: 0.6;
+    opacity: 0.7;
   }
 
   &:hover {

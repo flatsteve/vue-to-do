@@ -53,11 +53,11 @@ const store = new Vuex.Store({
     }
   },
 
-  // Store todos in local storage after each mutation of the store
+  // Store the result of any todo mutation in the db
   plugins: [
     store => {
       store.subscribe((mutation, state) => {
-        if (mutation.type !== "setUser") {
+        if (mutation.type.includes("Todo")) {
           db.collection("todos")
             .doc(state.user.id)
             .set({ data: state.todos });

@@ -3,6 +3,7 @@
     <div class="app__container">
       <div v-show="loading" class="app__loading">
         <p>Warming up</p>
+
         <LoadingIcon />
       </div>
 
