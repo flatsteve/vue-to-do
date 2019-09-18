@@ -4,7 +4,12 @@
 
     <form>
       <label>Email</label>
-      <input v-model="email" type="text" placeholder="e.g. joe@bananas.com" />
+      <input
+        v-model="email"
+        type="text"
+        placeholder="e.g. joe@bananas.com"
+        autofocus
+      />
 
       <label>Password</label>
       <input v-model="password" type="password" placeholder="Your password" />

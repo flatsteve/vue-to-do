@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
-import * as firebase from "firebase/app";
 
+import store from "./store";
 import Todos from "./views/Todos.vue";
 import Login from "./views/Login.vue";
 import Signup from "./views/Signup.vue";
@@ -42,7 +42,9 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-  const currentUser = firebase.auth().currentUser;
+  console.log("ROUTER BEFORE CALLED", store.state.user);
+
+  const currentUser = store.state.user;
 
   const requiresAuth = to.matched.some(
     routeRecord => routeRecord.meta.requiresAuth

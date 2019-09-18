@@ -3,12 +3,19 @@ import Vuex from "vuex";
 
 Vue.use(Vuex);
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
   state: {
+    user: null,
     todos: JSON.parse(localStorage.getItem("app_todos")) || []
   },
 
   mutations: {
+    // User mutations
+    setUser(state, payload) {
+      state.user = payload.user;
+    },
+
+    // Todo mutations
     addTodo(state, payload) {
       state.todos.push({
         id: Date.now().toString(),
@@ -49,3 +56,5 @@ export default new Vuex.Store({
     }
   ]
 });
+
+export default store;

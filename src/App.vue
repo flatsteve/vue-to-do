@@ -1,10 +1,50 @@
 <template>
   <div id="app">
     <div class="app__container">
-      <router-view />
+      <div v-show="loading" class="app__loading">
+        <p>Warming up</p>
+        <LoadingIcon />
+      </div>
+
+      <router-view v-show="!loading" />
     </div>
   </div>
 </template>
+
+<script>
+import LoadingIcon from "../public/svg/loading.svg";
+
+import * as firebase from "firebase/app";
+
+export default {
+  name: "App",
+  components: { LoadingIcon },
+  data() {
+    return {
+      loading: true
+    };
+  },
+  beforeCreate() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.$store.commit({
+          type: "setUser",
+          user: {
+            id: user.uid,
+            email: user.email
+          }
+        });
+
+        if (this.$router.name !== "todos") {
+          this.$router.replace("todos");
+        }
+      }
+
+      this.loading = false;
+    });
+  }
+};
+</script>
 
 <style lang="scss">
 @import url("~normalize.css");
@@ -34,8 +74,25 @@
 }
 
 .app__container {
+  display: flex;
+  flex-direction: column;
   margin: 0 auto;
   max-width: 50rem;
   padding: 0 1.25rem;
+}
+
+.app__loading {
+  align-items: center;
+  color: $white;
+  display: flex;
+  flex-direction: column;
+  font-style: italic;
+  justify-content: center;
+  min-height: 100vh;
+
+  svg {
+    margin-top: 0.75rem;
+    width: 2.5rem;
+  }
 }
 </style>

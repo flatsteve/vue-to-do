@@ -66,6 +66,10 @@ export default {
       });
     },
     editTodo(id) {
+      if (!this.editDescription) {
+        return this.$store.commit({ type: "removeTodo", id });
+      }
+
       this.$store.commit({
         type: "editTodo",
         id,

@@ -70,6 +70,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.todos {
+  padding-bottom: 5rem;
+}
+
 .header {
   align-items: center;
   display: flex;

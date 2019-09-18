@@ -1,6 +1,6 @@
 <template>
   <div v-click-outside="hideShowAccount" class="user">
-    <div class="user__name" @click="toggleShowAccount">info@flatsteve.com</div>
+    <div class="user__name" @click="toggleShowAccount">{{ user.email }}</div>
 
     <div v-show="showAccount" class="user__menu">
       <Button :on-click="signOut">Sign out</Button>
@@ -10,7 +10,9 @@
 
 <script>
 import * as firebase from "firebase/app";
+
 import Button from "../components/Button";
+import { mapState } from "vuex";
 
 export default {
   name: "User",
@@ -19,6 +21,9 @@ export default {
     return {
       showAccount: false
     };
+  },
+  computed: {
+    ...mapState(["user"])
   },
   methods: {
     toggleShowAccount() {
@@ -32,6 +37,7 @@ export default {
         .auth()
         .signOut()
         .then(() => {
+          this.$store.commit({ type: "setUser", user: null });
           this.$router.replace("login");
         });
     }
@@ -46,6 +52,10 @@ export default {
   &__name {
     color: $white;
     font-weight: bold;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   &__menu {
