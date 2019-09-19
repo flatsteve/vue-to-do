@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import * as firebase from "firebase/app";
 
 import { db } from "./main";
 
@@ -50,6 +51,42 @@ const store = new Vuex.Store({
       });
 
       todo.description = payload.description;
+    }
+  },
+
+  actions: {
+    login(undefined, { credentials }) {
+      return firebase
+        .auth()
+        .signInWithEmailAndPassword(credentials.email, credentials.password);
+    },
+    signUp(undefined, { credentials }) {
+      return firebase
+        .auth()
+        .createUserWithEmailAndPassword(
+          credentials.email,
+          credentials.password
+        );
+    },
+    signOut({ commit }) {
+      return firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          commit({ type: "setUser", user: null });
+        });
+    },
+    getTodos({ commit, state }) {
+      return db
+        .collection("todos")
+        .doc(state.user.id)
+        .get()
+        .then(doc => {
+          if (doc.exists) {
+            const { data } = doc.data();
+            commit({ type: "receiveTodos", todos: data });
+          }
+        });
     }
   },
 

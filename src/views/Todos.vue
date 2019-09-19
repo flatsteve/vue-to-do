@@ -46,7 +46,6 @@
 </template>
 
 <script>
-import { db } from "../main";
 import TodoItem from "../components/TodoItem";
 import User from "../components/User";
 import Button from "../components/Button";
@@ -73,14 +72,9 @@ export default {
   },
   methods: {
     getTodos() {
-      db.collection("todos")
-        .doc(this.$store.state.user.id)
-        .get()
-        .then(doc => {
-          this.loading = false;
-          const { data } = doc.data();
-          this.$store.commit({ type: "receiveTodos", todos: data });
-        });
+      this.$store.dispatch("getTodos").then(() => {
+        this.loading = false;
+      });
     },
     addTodo(e) {
       e.preventDefault();

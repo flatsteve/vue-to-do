@@ -9,10 +9,9 @@
 </template>
 
 <script>
-import * as firebase from "firebase/app";
+import { mapState } from "vuex";
 
 import Button from "../components/Button";
-import { mapState } from "vuex";
 
 export default {
   name: "User",
@@ -33,13 +32,9 @@ export default {
       this.showAccount = false;
     },
     signOut() {
-      firebase
-        .auth()
-        .signOut()
-        .then(() => {
-          this.$store.commit({ type: "setUser", user: null });
-          this.$router.replace("login");
-        });
+      this.$store.dispatch("signOut").then(() => {
+        this.$router.replace("login");
+      });
     }
   }
 };
@@ -52,6 +47,10 @@ export default {
   &__name {
     color: $white;
     font-weight: bold;
+    max-width: 12rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 
     &:hover {
       cursor: pointer;

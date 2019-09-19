@@ -14,7 +14,7 @@
       <label>Password</label>
       <input v-model="password" type="password" placeholder="Your password" />
 
-      <p v-show="error">{{ error }}</p>
+      <p v-show="error" class="login__error">{{ error }}</p>
 
       <Button
         :on-click="login"
@@ -32,8 +32,6 @@
 </template>
 
 <script>
-import * as firebase from "firebase/app";
-
 import Button from "../components/Button";
 
 export default {
@@ -51,15 +49,18 @@ export default {
       e.preventDefault();
 
       this.error = "";
+      const { email, password } = this;
 
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(this.email, this.password)
+      this.$store
+        .dispatch({
+          type: "login",
+          credentials: { email, password }
+        })
         .then(() => {
           this.$router.replace("todos");
         })
-        .catch(err => {
-          this.error = err.message;
+        .catch(error => {
+          this.error = error.message;
         });
     }
   }

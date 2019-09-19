@@ -14,7 +14,7 @@
       <label>Password</label>
       <input v-model="password" type="password" placeholder="Your password" />
 
-      <p v-show="error">{{ error }}</p>
+      <p v-show="error" class="login__error">{{ error }}</p>
 
       <Button
         :on-click="signup"
@@ -32,8 +32,6 @@
 </template>
 
 <script>
-import * as firebase from "firebase/app";
-
 import Button from "../components/Button";
 
 export default {
@@ -50,9 +48,14 @@ export default {
     signup(e) {
       e.preventDefault();
 
-      firebase
-        .auth()
-        .createUserWithEmailAndPassword(this.email, this.password)
+      this.error = "";
+      const { email, password } = this;
+
+      this.$store
+        .dispatch({
+          type: "signUp",
+          credentials: { email, password }
+        })
         .then(() => {
           this.$router.replace("todos");
         })
