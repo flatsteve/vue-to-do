@@ -25,22 +25,13 @@
         <TodoItem v-for="todo in orderedTodos" :key="todo.id" :todo="todo" />
       </div>
 
-      <div class="todos-add">
-        <form class="todos-add__controls">
-          <input
-            v-model="description"
-            type="text"
-            placeholder="e.g. Eat that frog"
-          />
-          <Button
-            :disabled="!description"
-            :on-click="addTodo"
-            class="todos-add__button"
-            type="submit"
-            >Add todo</Button
-          >
-        </form>
-      </div>
+      <AddTodo
+        v-show="showAdd"
+        @addTodo="addTodo"
+        @toggleShowAdd="toggleShowAdd"
+      />
+
+      <Fab :on-click="toggleShowAdd">Add</Fab>
     </div>
   </div>
 </template>
@@ -49,14 +40,15 @@
 import TodoItem from "../components/TodoItem";
 import Date from "../components/Date";
 import User from "../components/User";
-import Button from "../components/Button";
+import Fab from "../components/Fab";
+import AddTodo from "../components/AddTodo";
 import LoadingIcon from "../../public/svg/loading.svg";
 
 export default {
   name: "Todos",
-  components: { TodoItem, Button, Date, User, LoadingIcon },
+  components: { TodoItem, Date, User, LoadingIcon, Fab, AddTodo },
   data() {
-    return { description: "", loading: true };
+    return { loading: true, showAdd: false };
   },
   computed: {
     orderedTodos() {
@@ -77,11 +69,11 @@ export default {
         this.loading = false;
       });
     },
-    addTodo(e) {
-      e.preventDefault();
-
-      this.$store.commit({ type: "addTodo", description: this.description });
-      this.description = "";
+    toggleShowAdd() {
+      this.showAdd = !this.showAdd;
+    },
+    addTodo(description) {
+      this.$store.commit({ type: "addTodo", description });
     }
   }
 };
@@ -112,19 +104,6 @@ export default {
   display: flex;
   justify-content: space-between;
   padding: 2rem 0;
-}
-
-.todos-add {
-  display: flex;
-
-  &__button {
-    margin-left: 0.75rem;
-  }
-
-  &__controls {
-    display: flex;
-    margin-left: auto;
-  }
 }
 
 .todos-container {

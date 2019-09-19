@@ -1,6 +1,13 @@
 <template>
-  <div v-click-outside="hideShowAccount" class="user">
-    <div class="user__name" @click="toggleShowAccount">{{ user.email }}</div>
+  <div
+    v-click-outside="hideShowAccount"
+    class="user"
+    :class="{ 'user--open': showAccount }"
+  >
+    <div class="user__name" @click="toggleShowAccount">
+      {{ user.email }}
+      <ChevronIcon />
+    </div>
 
     <div v-show="showAccount" class="user__menu">
       <Button :on-click="signOut">Sign out</Button>
@@ -12,10 +19,11 @@
 import { mapState } from "vuex";
 
 import Button from "../components/Button";
+import ChevronIcon from "../../public/svg/chevron.svg";
 
 export default {
   name: "User",
-  components: { Button },
+  components: { Button, ChevronIcon },
   data() {
     return {
       showAccount: false
@@ -44,6 +52,12 @@ export default {
 .user {
   position: relative;
 
+  &--open {
+    .user__name svg {
+      transform: rotate(180deg);
+    }
+  }
+
   &__name {
     color: $white;
     font-weight: bold;
@@ -54,6 +68,12 @@ export default {
 
     &:hover {
       cursor: pointer;
+    }
+
+    svg {
+      fill: $white;
+      transition: all 0.2s ease-in;
+      width: 0.9rem;
     }
   }
 
