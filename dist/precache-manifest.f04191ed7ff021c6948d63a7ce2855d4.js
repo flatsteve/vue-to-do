@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "8e86454ec3d31475e3de",
-    "url": "/vue-to-do/css/app.a33f3900.css"
+    "revision": "48a671eb127467d39c27",
+    "url": "/vue-to-do/css/app.e5bcc80c.css"
   },
   {
-    "revision": "8e86454ec3d31475e3de",
-    "url": "/vue-to-do/js/app.9f9ea6c2.js"
+    "revision": "48a671eb127467d39c27",
+    "url": "/vue-to-do/js/app.13d677b2.js"
   },
   {
     "revision": "64ebb565a7dc23b27256",
@@ -16,12 +16,20 @@ self.__precacheManifest = [
     "url": "/vue-to-do/js/chunk-vendors.d55c8088.js"
   },
   {
-    "revision": "3a54e014bd5eb01cf2a6b98c24f263de",
+    "revision": "d885296018fd3c5b7a24610045803624",
     "url": "/vue-to-do/index.html"
   },
   {
     "revision": "70ce796a6a13ba47b37f720b895d5794",
     "url": "/vue-to-do/svg/bin.svg"
+  },
+  {
+    "revision": "3e65fa5423dfe6c3f8b678e629d9a469",
+    "url": "/vue-to-do/svg/chevron.svg"
+  },
+  {
+    "revision": "ee74c1c839ddae7dadc6a5348a01dc9e",
+    "url": "/vue-to-do/svg/close.svg"
   },
   {
     "revision": "08d8b5031b2e8edff94e606603a8fd81",
