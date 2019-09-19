@@ -85,9 +85,14 @@ export default {
 <style scoped lang="scss">
 .todo-item {
   align-items: center;
+  border-bottom: 1px solid lighten($blue, 25%);
   display: flex;
   justify-content: space-between;
   padding: 1.25rem;
+
+  &:last-of-type {
+    border-bottom: none;
+  }
 
   &--checked .todo-item__description {
     text-decoration: line-through;
@@ -110,7 +115,7 @@ export default {
   }
 
   &__description {
-    margin: 0;
+    margin: 0 0.75rem 0 0;
   }
 }
 </style>

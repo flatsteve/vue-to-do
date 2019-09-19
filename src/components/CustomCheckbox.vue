@@ -51,8 +51,8 @@ export default {
     border-radius: 50%;
     content: "";
     display: block;
-    height: 2.5rem;
-    width: 2.5rem;
+    height: 2rem;
+    width: 2rem;
     transition: all 0.3s ease-in;
   }
 }
@@ -64,13 +64,13 @@ export default {
 .checkbox:checked + .custom-checkbox:after {
   content: "";
   display: block;
-  width: 0.5rem;
+  width: 0.4rem;
   height: 1rem;
   border: solid $white;
-  border-width: 0 0.3rem 0.3rem 0;
+  border-width: 0 0.25rem 0.25rem 0;
   transform: rotate(45deg);
   position: absolute;
-  top: 0.6rem;
-  left: 1rem;
+  top: 0.5rem;
+  left: 0.9rem;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="todos">
     <div class="header">
-      <h2 class="header__title">Get things done</h2>
+      <Date />
 
       <User />
     </div>
@@ -47,13 +47,14 @@
 
 <script>
 import TodoItem from "../components/TodoItem";
+import Date from "../components/Date";
 import User from "../components/User";
 import Button from "../components/Button";
 import LoadingIcon from "../../public/svg/loading.svg";
 
 export default {
   name: "Todos",
-  components: { TodoItem, Button, User, LoadingIcon },
+  components: { TodoItem, Button, Date, User, LoadingIcon },
   data() {
     return { description: "", loading: true };
   },
@@ -110,12 +111,7 @@ export default {
   align-items: center;
   display: flex;
   justify-content: space-between;
-  padding: 2.5rem 0;
-
-  &__title {
-    color: $white;
-    margin: 0;
-  }
+  padding: 2rem 0;
 }
 
 .todos-add {
