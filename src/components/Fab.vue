@@ -20,17 +20,18 @@ export default {
 $size: 4.75rem;
 
 button {
-  background-color: $pink;
+  align-self: flex-end;
+  background-color: darken($blue, 15%);
   border-radius: 50%;
-  box-shadow: 0px 2px 5px rgba($dark-blue, 0.3);
+  box-shadow: 0px 5px 10px rgba($dark-blue, 0.5);
   border: none;
-  bottom: 2.5rem;
+  bottom: 2rem;
   color: $white;
   height: $size;
   font-weight: bold;
+  margin-right: -0.5rem;
   padding: 0.75rem 1rem;
-  position: fixed;
-  right: 2.5rem;
+  position: sticky;
   transition: all 0.3s ease-in;
   width: $size;
   z-index: 999;

@@ -9,9 +9,11 @@
       <ChevronIcon />
     </div>
 
-    <div v-show="showAccount" class="user__menu">
-      <Button :on-click="signOut">Sign out</Button>
-    </div>
+    <transition name="fade">
+      <div v-show="showAccount" class="user__menu">
+        <Button :on-click="signOut">Sign out</Button>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -92,5 +94,14 @@ export default {
     min-width: 12rem;
     z-index: 9;
   }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

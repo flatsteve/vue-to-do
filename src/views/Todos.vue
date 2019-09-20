@@ -6,13 +6,15 @@
       <User />
     </div>
 
-    <div v-show="loading" class="todos__loading">
-      <p>Loading your todos</p>
+    <template v-if="loading">
+      <div class="todos__loading">
+        <p>Loading your todos</p>
 
-      <LoadingIcon />
-    </div>
+        <LoadingIcon />
+      </div>
+    </template>
 
-    <div v-show="!loading">
+    <template v-else>
       <div class="todos-container">
         <div v-show="!orderedTodos.length" class="todos-empty">
           <h3>Don't you have anything to do?</h3>
@@ -32,7 +34,7 @@
       />
 
       <Fab :on-click="toggleShowAdd">Add</Fab>
-    </div>
+    </template>
   </div>
 </template>
 
@@ -81,6 +83,8 @@ export default {
 
 <style scoped lang="scss">
 .todos {
+  display: flex;
+  flex-direction: column;
   padding-bottom: 5rem;
 
   &__loading {

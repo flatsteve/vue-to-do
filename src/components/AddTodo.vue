@@ -58,7 +58,7 @@ export default {
   bottom: 0;
   display: flex;
   left: 0;
-  height: 20vh;
+  height: 25vh;
   justify-content: center;
   position: fixed;
   right: 0;
