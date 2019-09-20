@@ -28,7 +28,11 @@
       </div>
 
       <transition name="slide">
-        <AddTodo v-if="showAdd" @addTodo="addTodo" @toggleShowAdd="toggleShowAdd" />
+        <AddTodo
+          v-if="showAdd"
+          @addTodo="addTodo"
+          @toggleShowAdd="toggleShowAdd"
+        />
       </transition>
 
       <Fab :on-click="toggleShowAdd">Add</Fab>
