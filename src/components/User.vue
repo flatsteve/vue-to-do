@@ -98,10 +98,12 @@ export default {
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.5s;
+  transition: all 0.3s ease;
 }
+
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
+  transform: translateY(1.25rem);
 }
 </style>

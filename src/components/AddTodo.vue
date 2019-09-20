@@ -1,5 +1,5 @@
 <template>
-  <div class="todos-add">
+  <div v-click-outside="close" class="todos-add">
     <div class="todos-add__close" @click="close">
       <CloseIcon />
     </div>
@@ -41,6 +41,7 @@ export default {
 
       this.$emit("addTodo", this.description);
       this.description = "";
+      this.$emit("toggleShowAdd");
     },
     close() {
       this.$emit("toggleShowAdd");
@@ -58,7 +59,7 @@ export default {
   bottom: 0;
   display: flex;
   left: 0;
-  height: 25vh;
+  height: 10rem;
   justify-content: center;
   position: fixed;
   right: 0;

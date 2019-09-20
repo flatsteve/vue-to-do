@@ -27,11 +27,9 @@
         <TodoItem v-for="todo in orderedTodos" :key="todo.id" :todo="todo" />
       </div>
 
-      <AddTodo
-        v-show="showAdd"
-        @addTodo="addTodo"
-        @toggleShowAdd="toggleShowAdd"
-      />
+      <transition name="slide">
+        <AddTodo v-if="showAdd" @addTodo="addTodo" @toggleShowAdd="toggleShowAdd" />
+      </transition>
 
       <Fab :on-click="toggleShowAdd">Add</Fab>
     </template>
@@ -85,7 +83,7 @@ export default {
 .todos {
   display: flex;
   flex-direction: column;
-  padding-bottom: 5rem;
+  padding-bottom: 3rem;
 
   &__loading {
     align-items: center;
@@ -119,5 +117,17 @@ export default {
 
 .todos-empty {
   padding: 1.25rem;
+}
+
+.slide-enter-active {
+  transition: all 0.3s ease-out;
+}
+.slide-leave-active {
+  transition: all 0.3s ease-in;
+}
+
+.slide-enter,
+.slide-leave-to {
+  transform: translateY(100%);
 }
 </style>
