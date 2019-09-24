@@ -19,6 +19,7 @@
       <Button
         :on-click="login"
         :disabled="!email || !password"
+        :loading="loading"
         class="login__button"
         >Login</Button
       >
@@ -41,7 +42,8 @@ export default {
     return {
       email: "",
       password: "",
-      error: ""
+      error: "",
+      loading: false
     };
   },
   methods: {
@@ -49,6 +51,7 @@ export default {
       e.preventDefault();
 
       this.error = "";
+      this.loading = true;
       const { email, password } = this;
 
       this.$store
@@ -61,6 +64,7 @@ export default {
         })
         .catch(error => {
           this.error = error.message;
+          this.loading = false;
         });
     }
   }

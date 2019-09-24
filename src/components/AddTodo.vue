@@ -9,7 +9,6 @@
         v-model="description"
         type="text"
         placeholder="e.g. Eat that frog"
-        autofocus
       />
 
       <Button

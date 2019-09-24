@@ -41,7 +41,8 @@ export default {
     return {
       email: "",
       password: "",
-      error: ""
+      error: "",
+      loading: false
     };
   },
   methods: {
@@ -49,6 +50,7 @@ export default {
       e.preventDefault();
 
       this.error = "";
+      this.loading = true;
       const { email, password } = this;
 
       this.$store
@@ -59,8 +61,9 @@ export default {
         .then(() => {
           this.$router.replace("todos");
         })
-        .catch(err => {
-          this.error = err.message;
+        .catch(error => {
+          this.error = error.message;
+          this.loading = false;
         });
     }
   }
