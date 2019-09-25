@@ -12,5 +12,10 @@ module.exports = {
         prependData: `@import "@/styles/colors.scss";`
       }
     }
+  },
+  pwa: {
+    workboxOptions: {
+      skipWaiting: true
+    }
   }
 };
