@@ -11,7 +11,8 @@ const mutationsToSaveToDB = ["addTodo", "checkTodo", "removeTodo", "editTodo"];
 const store = new Vuex.Store({
   state: {
     user: null,
-    todos: []
+    todos: [],
+    saved: false
   },
 
   mutations: {
@@ -53,6 +54,11 @@ const store = new Vuex.Store({
       });
 
       todo.description = payload.description;
+    },
+
+    // UI mutations
+    setSaved(state, payload) {
+      state.saved = payload.saved;
     }
   },
 
@@ -104,19 +110,29 @@ const store = new Vuex.Store({
   // Store the result of important todo mutations in the db for logged in users
   plugins: [
     store => {
+      let timeoutId;
+
       store.subscribe((mutation, state) => {
         if (mutationsToSaveToDB.includes(mutation.type) && state.user) {
           db.collection("todos")
             .doc(state.user.id)
             .set({ data: state.todos })
-            .then(() => {
-              // Todo show some global saved text
-              console.log("saved");
-            })
-            .catch(error => {
-              // Todo show some global error text
-              console.log(error);
-            });
+            .then(
+              () => {
+                store.commit({ type: "setSaved", saved: true });
+
+                if (timeoutId) {
+                  clearTimeout(timeoutId);
+                }
+
+                timeoutId = setTimeout(() => {
+                  store.commit({ type: "setSaved", saved: false });
+                }, 2000);
+              },
+              error => {
+                console.log(error);
+              }
+            );
         }
       });
     }
