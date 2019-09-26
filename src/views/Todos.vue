@@ -113,10 +113,10 @@ export default {
 }
 
 .header {
-  align-items: center;
+  align-items: baseline;
   display: flex;
   justify-content: space-between;
-  padding: 2rem 0 1.5rem 0;
+  padding: 2rem 0 1.25rem 0;
 }
 
 .todos-container {

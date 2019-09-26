@@ -24,7 +24,7 @@ export default {
 .SavedIndicator {
   &__text {
     color: $white;
-    margin: 0.25rem 1.25rem 0.25rem 0;
+    margin: 0.25rem 1.25rem 0 0;
     opacity: 0;
     text-align: right;
     transition: all 0.2s ease-in-out;
