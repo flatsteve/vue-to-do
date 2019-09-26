@@ -49,8 +49,6 @@ export default {
 
 <style lang="scss">
 @import url("~normalize.css");
-
-@import "./styles/colors";
 @import "./styles/global";
 
 #app {
@@ -79,7 +77,11 @@ export default {
   flex-direction: column;
   margin: 0 auto;
   max-width: 50rem;
-  padding: 0 1.25rem;
+  padding: 0 0.75rem;
+
+  @include wider($mobile-landscape) {
+    padding: 0 1.25rem;
+  }
 }
 
 .app__loading {

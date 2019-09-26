@@ -29,12 +29,16 @@ button {
   color: $white;
   height: $size;
   font-weight: bold;
-  margin-right: -0.5rem;
+  margin-right: 0;
   padding: 0.75rem 1rem;
   position: sticky;
   transition: all 0.3s ease-in;
   width: $size;
   z-index: 999;
+
+  @include wider($mobile-landscape) {
+    margin-right: -0.5rem;
+  }
 
   &:disabled {
     opacity: 0.7;

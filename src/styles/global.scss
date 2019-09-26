@@ -2,6 +2,14 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: 95%;
+
+  @include wider($mobile-landscape) {
+    font-size: 100%;
+  }
+}
+
 input {
   border: 2px solid $blue;
   border-radius: 0.25rem;

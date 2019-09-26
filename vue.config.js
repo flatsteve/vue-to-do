@@ -9,7 +9,7 @@ module.exports = {
     sourceMap: true,
     loaderOptions: {
       sass: {
-        prependData: `@import "@/styles/colors.scss";`
+        prependData: `@import "@/styles/colors.scss"; @import "@/styles/responsive.scss";`
       }
     }
   },
