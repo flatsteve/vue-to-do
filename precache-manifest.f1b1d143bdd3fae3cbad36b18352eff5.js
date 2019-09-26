@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "7208ea92ad63e159d47f",
-    "url": "/vue-to-do/css/app.375c6ad2.css"
+    "revision": "a2f2776200182db2e61c",
+    "url": "/vue-to-do/css/app.448d8f27.css"
   },
   {
-    "revision": "7208ea92ad63e159d47f",
-    "url": "/vue-to-do/js/app.b0e4988e.js"
+    "revision": "a2f2776200182db2e61c",
+    "url": "/vue-to-do/js/app.9ba88dc1.js"
   },
   {
     "revision": "f64e4c3af752effc722e",
@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/vue-to-do/js/chunk-vendors.e8cfb7a9.js"
   },
   {
-    "revision": "af58619c4f1f9bace4f2c62cf9185550",
+    "revision": "60f879d9d3fd85c157952c7d5ac70f76",
     "url": "/vue-to-do/index.html"
   },
   {
