@@ -9,6 +9,8 @@
       <ChevronIcon />
     </div>
 
+    <SavedIndicator />
+
     <transition name="fade">
       <div v-show="showAccount" class="user__menu">
         <Button :on-click="signOut">Sign out</Button>
@@ -20,12 +22,13 @@
 <script>
 import { mapState } from "vuex";
 
-import Button from "../components/Button";
+import Button from "./Button";
+import SavedIndicator from "./SavedIndicator";
 import ChevronIcon from "../../public/svg/chevron.svg";
 
 export default {
   name: "User",
-  components: { Button, ChevronIcon },
+  components: { Button, ChevronIcon, SavedIndicator },
   data() {
     return {
       showAccount: false

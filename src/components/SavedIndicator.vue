@@ -1,10 +1,11 @@
 <template>
   <div class="SavedIndicator">
-    <small
+    <p
       class="SavedIndicator__text"
       :class="{ 'SavedIndicator__text--saved': saved }"
-      >Changes saved</small
     >
+      <small>Changes saved</small>
+    </p>
   </div>
 </template>
 
@@ -21,13 +22,11 @@ export default {
 
 <style scoped lang="scss">
 .SavedIndicator {
-  display: flex;
-  justify-content: flex-end;
-
   &__text {
     color: $white;
-    margin: 0 1.25rem 0.25rem;
+    margin: 0.25rem 1.25rem 0.25rem 0;
     opacity: 0;
+    text-align: right;
     transition: all 0.2s ease-in-out;
     transform: translateX(1.25rem);
 

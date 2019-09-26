@@ -15,8 +15,6 @@
     </template>
 
     <template v-else>
-      <SavedIndicator />
-
       <div class="todos-container">
         <div v-show="!orderedTodos.length" class="todos-empty">
           <h3>Don't you have anything to do?</h3>
@@ -46,7 +44,6 @@
 import TodoItem from "../components/TodoItem";
 import Date from "../components/Date";
 import User from "../components/User";
-import SavedIndicator from "../components/SavedIndicator";
 import Fab from "../components/Fab";
 import AddTodo from "../components/AddTodo";
 import LoadingIcon from "../../public/svg/loading.svg";
@@ -57,7 +54,6 @@ export default {
     TodoItem,
     Date,
     User,
-    SavedIndicator,
     LoadingIcon,
     Fab,
     AddTodo
@@ -120,7 +116,7 @@ export default {
   align-items: center;
   display: flex;
   justify-content: space-between;
-  padding: 2rem 0 1rem 0;
+  padding: 2rem 0 1.5rem 0;
 }
 
 .todos-container {
