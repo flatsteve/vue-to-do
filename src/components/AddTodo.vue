@@ -16,14 +16,15 @@
         :on-click="addTodo"
         class="todos-add__button"
         type="submit"
-        >Add todo</Button
       >
+        Add todo
+      </Button>
     </form>
   </div>
 </template>
 
 <script>
-import Button from "../components/Button";
+import Button from "@/components/Button";
 import CloseIcon from "../../public/svg/close.svg";
 
 export default {

@@ -16,7 +16,7 @@
 
     <template v-else>
       <div class="todos-container">
-        <div v-show="!orderedTodos.length" class="todos-empty">
+        <div v-if="hasNoTodos" class="todos-empty">
           <h3>Don't you have anything to do?</h3>
 
           <p>Nice, go read a book or something...</p>
@@ -24,7 +24,25 @@
           <p>Or you could add a todo below.</p>
         </div>
 
-        <TodoItem v-for="todo in orderedTodos" :key="todo.id" :todo="todo" />
+        <draggable v-model="pending">
+          <TodoItem
+            v-for="todo in pending"
+            :key="todo.id"
+            :todo="todo"
+            @checkTodo="checkTodo"
+            @removeTodo="removeTodo"
+          />
+        </draggable>
+
+        <draggable v-model="completed">
+          <TodoItem
+            v-for="todo in completed"
+            :key="todo.id"
+            :todo="todo"
+            @checkTodo="checkTodo"
+            @removeTodo="removeTodo"
+          />
+        </draggable>
       </div>
 
       <transition name="slide">
@@ -41,12 +59,15 @@
 </template>
 
 <script>
+import { mapActions, mapState, mapMutations } from "vuex";
+
 import TodoItem from "../components/TodoItem";
 import Date from "../components/Date";
 import User from "../components/User";
 import Fab from "../components/Fab";
 import AddTodo from "../components/AddTodo";
 import LoadingIcon from "../../public/svg/loading.svg";
+import draggable from "vuedraggable";
 
 export default {
   name: "Todos",
@@ -56,35 +77,44 @@ export default {
     User,
     LoadingIcon,
     Fab,
-    AddTodo
+    AddTodo,
+    draggable
   },
   data() {
     return { loading: true, showAdd: false };
   },
   computed: {
-    orderedTodos() {
-      return this.$store.state.todos.reduce((acc, todo) => {
-        if (todo.checked === false) {
-          return [todo, ...acc];
-        }
-        return [...acc, todo];
-      }, []);
+    ...mapState(["pendingTodos", "completedTodos"]),
+    pending: {
+      get() {
+        return this.pendingTodos;
+      },
+      set(todos) {
+        this.setTodos({ type: "pending", todos });
+      }
+    },
+    completed: {
+      get() {
+        return this.completedTodos;
+      },
+      set(todos) {
+        this.setTodos({ type: "completed", todos });
+      }
+    },
+    hasNoTodos() {
+      return !this.pending.length && !this.completed.length;
     }
   },
   mounted() {
-    this.getTodos();
+    this.getTodos().then(() => {
+      this.loading = false;
+    });
   },
   methods: {
-    getTodos() {
-      this.$store.dispatch("getTodos").then(() => {
-        this.loading = false;
-      });
-    },
+    ...mapActions(["getTodos"]),
+    ...mapMutations(["addTodo", "setTodos", "removeTodo", "checkTodo"]),
     toggleShowAdd() {
       this.showAdd = !this.showAdd;
-    },
-    addTodo(description) {
-      this.$store.commit({ type: "addTodo", description });
     }
   }
 };
@@ -124,6 +154,7 @@ export default {
   border: 2px solid $blue;
   border-radius: 1.25rem;
   margin-bottom: 1.75rem;
+  overflow: hidden;
 }
 
 .todos-empty {

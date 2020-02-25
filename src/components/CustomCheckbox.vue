@@ -25,7 +25,7 @@ export default {
     }
   },
   methods: {
-    change: function(event) {
+    change(event) {
       this.$emit("checked", event.target.name);
     }
   }

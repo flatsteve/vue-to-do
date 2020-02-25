@@ -1,10 +1,10 @@
 import Vue from "vue";
 import Router from "vue-router";
 
-import store from "./store";
-import Todos from "./views/Todos.vue";
-import Login from "./views/Login.vue";
-import Signup from "./views/Signup.vue";
+import store from "@/store/store";
+import Todos from "@/views/Todos.vue";
+import Login from "@/views/Login.vue";
+import Signup from "@/views/Signup.vue";
 
 Vue.use(Router);
 

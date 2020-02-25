@@ -4,10 +4,10 @@
       <input
         v-show="edit"
         ref="editDescription"
-        v-model="editDescription"
+        v-model="todo.description"
         type="text"
-        @keyup.enter="() => editTodo(todo.id)"
-        @blur="() => editTodo(todo.id)"
+        @keyup.enter="editTodo(todo)"
+        @blur="editTodo(todo)"
       />
 
       <h4 v-show="!edit" class="todo-item__description" @click="enableEditTodo">
@@ -19,20 +19,20 @@
       <BinIcon
         v-show="todo.checked"
         class="todo-item__actions__delete"
-        @click="() => removeTodo(todo.id)"
+        @click="$emit('removeTodo', todo)"
       />
 
       <CustomCheckbox
         :id="todo.id"
         :checked="todo.checked"
-        @checked="checkTodo"
+        @checked="$emit('checkTodo', todo)"
       />
     </div>
   </div>
 </template>
 
 <script>
-import CustomCheckbox from "./CustomCheckbox";
+import CustomCheckbox from "@/components/CustomCheckbox";
 import BinIcon from "../../public/svg/bin.svg";
 
 export default {
@@ -51,12 +51,6 @@ export default {
     };
   },
   methods: {
-    checkTodo(id) {
-      this.$store.commit({ type: "checkTodo", id });
-    },
-    removeTodo(id) {
-      this.$store.commit({ type: "removeTodo", id });
-    },
     enableEditTodo() {
       this.edit = true;
 
@@ -65,17 +59,12 @@ export default {
         this.$refs.editDescription.focus();
       });
     },
-    editTodo(id) {
-      if (!this.editDescription) {
-        return this.$store.commit({ type: "removeTodo", id });
+    editTodo(todo) {
+      if (!todo.description) {
+        return this.$emit("removeTodo", todo);
       }
 
-      this.$store.commit({
-        type: "editTodo",
-        id,
-        description: this.editDescription
-      });
-
+      this.$store.commit("saveTodos");
       this.edit = false;
     }
   }
@@ -85,6 +74,7 @@ export default {
 <style scoped lang="scss">
 .todo-item {
   align-items: center;
+  background-color: $white;
   border-bottom: 1px solid lighten($blue, 25%);
   display: flex;
   justify-content: space-between;
