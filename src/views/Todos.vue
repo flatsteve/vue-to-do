@@ -28,7 +28,7 @@
           <h4 class="todos__title">Get shit done ({{ pending.length }})</h4>
 
           <div class="todos-container">
-            <draggable v-model="pending">
+            <draggable v-model="pending" filter=".todo-item--edit">
               <TodoItem
                 v-for="todo in pending"
                 :key="todo.id"
@@ -43,7 +43,7 @@
         <div v-if="completed.length">
           <h4 class="todos__title">Shit done ({{ completed.length }})</h4>
 
-          <div class="todos-container">
+          <div class="todos-container" filter=".todo-item--edit">
             <draggable v-model="completed">
               <TodoItem
                 v-for="todo in completed"

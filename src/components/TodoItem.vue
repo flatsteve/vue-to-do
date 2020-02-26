@@ -1,8 +1,11 @@
 <template>
-  <div class="todo-item" :class="{ 'todo-item--checked': todo.checked }">
+  <div
+    class="todo-item"
+    :class="{ 'todo-item--checked': todo.checked, 'todo-item--edit': edit }"
+  >
     <div>
       <input
-        v-show="edit"
+        v-if="edit"
         ref="editDescription"
         v-model="todo.description"
         type="text"
@@ -10,7 +13,7 @@
         @blur="editTodo(todo)"
       />
 
-      <h4 v-show="!edit" class="todo-item__description" @click="enableEditTodo">
+      <h4 v-else class="todo-item__description" @click="enableEditTodo">
         {{ todo.description }}
       </h4>
     </div>
