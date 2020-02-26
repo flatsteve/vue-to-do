@@ -6,10 +6,9 @@ function removeTodoFromList(state, { type, id }) {
 
 export default {
   // User mutations
-  setUser(state, payload) {
-    state.user = payload.user;
+  setUser(state, user) {
+    state.user = user;
   },
-
   // Todo mutations
   receiveTodos(state, todos) {
     const pending = [];
@@ -26,15 +25,12 @@ export default {
     state.pendingTodos = pending;
     state.completedTodos = complete;
   },
-
   setTodos(state, { type, todos }) {
     state[`${type}Todos`] = todos;
   },
-
   saveTodos() {
     return false;
   },
-
   addTodo(state, description) {
     state.pendingTodos.push({
       id: Date.now().toString(),
@@ -42,10 +38,8 @@ export default {
       checked: false
     });
   },
-
   checkTodo(state, todo) {
     todo.checked = !todo.checked;
-    debugger;
 
     if (todo.checked) {
       removeTodoFromList(state, { type: "pending", id: todo.id });
@@ -55,7 +49,6 @@ export default {
       state.pendingTodos.push(todo);
     }
   },
-
   removeTodo(state, todo) {
     if (todo.checked) {
       removeTodoFromList(state, { type: "completed", id: todo.id });
@@ -63,7 +56,6 @@ export default {
       removeTodoFromList(state, { type: "pending", id: todo.id });
     }
   },
-
   // UI mutations
   setSaved(state, value) {
     state.saved = value;

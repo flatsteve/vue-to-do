@@ -2,23 +2,19 @@ import * as firebase from "firebase/app";
 import { db } from "@/main";
 
 export default {
-  login(undefined, { credentials }) {
-    return firebase
-      .auth()
-      .signInWithEmailAndPassword(credentials.email, credentials.password);
+  login(undefined, { email, password }) {
+    return firebase.auth().signInWithEmailAndPassword(email, password);
   },
-  signUp(undefined, { credentials }) {
-    return firebase
-      .auth()
-      .createUserWithEmailAndPassword(credentials.email, credentials.password);
+  signUp(undefined, { email, password }) {
+    return firebase.auth().createUserWithEmailAndPassword(email, password);
   },
   signOut({ commit }) {
     return firebase
       .auth()
       .signOut()
       .then(() => {
-        commit({ type: "setUser", user: null });
-        commit({ type: "receiveTodos", todos: [] });
+        commit("setUser", null);
+        commit("receiveTodos", []);
       });
   },
   getTodos({ commit, state }) {

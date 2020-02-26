@@ -17,12 +17,13 @@
       <p v-show="error" class="login__error">{{ error }}</p>
 
       <Button
-        :on-click="login"
+        :on-click="handleLogin"
         :disabled="!email || !password"
         :loading="loading"
         class="login__button"
-        >Login</Button
       >
+        Login
+      </Button>
 
       <p class="login__link">
         Don't have an account?
@@ -33,7 +34,9 @@
 </template>
 
 <script>
-import Button from "../components/Button";
+import { mapActions } from "vuex";
+
+import Button from "@/components/Button";
 
 export default {
   name: "Login",
@@ -47,18 +50,15 @@ export default {
     };
   },
   methods: {
-    login(e) {
+    ...mapActions(["login"]),
+    handleLogin(e) {
       e.preventDefault();
 
       this.error = "";
       this.loading = true;
       const { email, password } = this;
 
-      this.$store
-        .dispatch({
-          type: "login",
-          credentials: { email, password }
-        })
+      this.login({ email, password })
         .then(() => {
           this.$router.replace("todos");
         })

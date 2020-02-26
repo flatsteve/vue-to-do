@@ -1,8 +1,8 @@
 <template>
-  <div class="SavedIndicator">
+  <div class="saved-indicator">
     <p
-      class="SavedIndicator__text"
-      :class="{ 'SavedIndicator__text--saved': saved }"
+      class="saved-indicator__text"
+      :class="{ 'saved-indicator__text--saved': saved }"
     >
       <small>Changes saved</small>
     </p>
@@ -10,18 +10,18 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
   name: "SavedIndicator",
   computed: {
-    saved() {
-      return this.$store.state.saved;
-    }
+    ...mapState(["saved"])
   }
 };
 </script>
 
 <style scoped lang="scss">
-.SavedIndicator {
+.saved-indicator {
   &__text {
     color: $white;
     margin: 0.25rem 1.25rem 0 0;

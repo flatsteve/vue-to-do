@@ -31,7 +31,7 @@ button {
   font-weight: bold;
   margin-right: 0;
   padding: 0.75rem 1rem;
-  position: sticky;
+  position: fixed;
   transition: all 0.3s ease-in;
   width: $size;
   z-index: 999;

@@ -1,18 +1,20 @@
 <template>
   <div id="app">
     <div class="app__container">
-      <div v-show="loading" class="app__loading">
+      <div v-if="loading" class="app__loading">
         <p>Warming up</p>
 
         <LoadingIcon />
       </div>
 
-      <router-view v-show="!loading" />
+      <router-view v-else />
     </div>
   </div>
 </template>
 
 <script>
+import { mapMutations } from "vuex";
+
 import LoadingIcon from "../public/svg/loading.svg";
 
 import * as firebase from "firebase/app";
@@ -28,12 +30,9 @@ export default {
   beforeCreate() {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        this.$store.commit({
-          type: "setUser",
-          user: {
-            id: user.uid,
-            email: user.email
-          }
+        this.setUser({
+          id: user.uid,
+          email: user.email
         });
 
         if (this.$router.name !== "todos") {
@@ -43,6 +42,9 @@ export default {
 
       this.loading = false;
     });
+  },
+  methods: {
+    ...mapMutations(["setUser"])
   }
 };
 </script>

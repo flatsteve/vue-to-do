@@ -1,6 +1,6 @@
 <template>
   <div class="todos">
-    <div class="header">
+    <div class="todos__header">
       <Date />
 
       <User />
@@ -15,34 +15,46 @@
     </template>
 
     <template v-else>
-      <div class="todos-container">
-        <div v-if="hasNoTodos" class="todos-empty">
-          <h3>Don't you have anything to do?</h3>
+      <div v-if="hasNoTodos" class="todos-empty">
+        <h3>Don't you have anything to do?</h3>
 
-          <p>Nice, go read a book or something...</p>
+        <p>Nice, go read a book or something...</p>
 
-          <p>Or you could add a todo below.</p>
+        <p>Or you could add a todo below.</p>
+      </div>
+
+      <div v-else>
+        <div v-if="pending.length">
+          <h4 class="todos__title">Get shit done ({{ pending.length }})</h4>
+
+          <div class="todos-container">
+            <draggable v-model="pending">
+              <TodoItem
+                v-for="todo in pending"
+                :key="todo.id"
+                :todo="todo"
+                @checkTodo="checkTodo"
+                @removeTodo="removeTodo"
+              />
+            </draggable>
+          </div>
         </div>
 
-        <draggable v-model="pending">
-          <TodoItem
-            v-for="todo in pending"
-            :key="todo.id"
-            :todo="todo"
-            @checkTodo="checkTodo"
-            @removeTodo="removeTodo"
-          />
-        </draggable>
+        <div v-if="completed.length">
+          <h4 class="todos__title">Shit done ({{ completed.length }})</h4>
 
-        <draggable v-model="completed">
-          <TodoItem
-            v-for="todo in completed"
-            :key="todo.id"
-            :todo="todo"
-            @checkTodo="checkTodo"
-            @removeTodo="removeTodo"
-          />
-        </draggable>
+          <div class="todos-container">
+            <draggable v-model="completed">
+              <TodoItem
+                v-for="todo in completed"
+                :key="todo.id"
+                :todo="todo"
+                @checkTodo="checkTodo"
+                @removeTodo="removeTodo"
+              />
+            </draggable>
+          </div>
+        </div>
       </div>
 
       <transition name="slide">
@@ -126,6 +138,13 @@ export default {
   flex-direction: column;
   padding-bottom: 3rem;
 
+  &__header {
+    align-items: baseline;
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 0 1.25rem 0;
+  }
+
   &__loading {
     align-items: center;
     color: $white;
@@ -140,16 +159,15 @@ export default {
       width: 2.5rem;
     }
   }
+
+  &__title {
+    color: $white;
+    margin: 0 0 0.75rem;
+  }
 }
 
-.header {
-  align-items: baseline;
-  display: flex;
-  justify-content: space-between;
-  padding: 2rem 0 1.25rem 0;
-}
-
-.todos-container {
+.todos-container,
+.todos-empty {
   background-color: $white;
   border: 2px solid $blue;
   border-radius: 1.25rem;
