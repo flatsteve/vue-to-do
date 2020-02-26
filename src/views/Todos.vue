@@ -32,6 +32,7 @@
               v-model="pending"
               filter=".todo-item--edit"
               delay="100"
+              :prevent-on-filter="false"
               :delay-on-touch-only="true"
             >
               <TodoItem
@@ -53,6 +54,7 @@
               v-model="completed"
               filter=".todo-item--edit"
               delay="100"
+              :prevent-on-filter="false"
               :delay-on-touch-only="true"
             >
               <TodoItem
