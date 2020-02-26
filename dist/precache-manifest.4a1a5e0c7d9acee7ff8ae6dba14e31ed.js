@@ -4,20 +4,20 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/vue-to-do/404.html"
   },
   {
-    "revision": "2595a280d772984a04d7",
-    "url": "/vue-to-do/css/app.b0220dda.css"
+    "revision": "2c7cbb0580c1a621c227",
+    "url": "/vue-to-do/css/app.ef9028b7.css"
   },
   {
     "revision": "972dab97ab07b5a21551",
     "url": "/vue-to-do/css/chunk-vendors.b9711456.css"
   },
   {
-    "revision": "25fcbc036c7fae378f20f05634fefc6e",
+    "revision": "3eaf8a6a0e76ad9c9e4463aabdccb4d7",
     "url": "/vue-to-do/index.html"
   },
   {
-    "revision": "2595a280d772984a04d7",
-    "url": "/vue-to-do/js/app.b0465814.js"
+    "revision": "2c7cbb0580c1a621c227",
+    "url": "/vue-to-do/js/app.7d62ad08.js"
   },
   {
     "revision": "972dab97ab07b5a21551",
