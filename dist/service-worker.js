@@ -11,15 +11,15 @@
  * See https://goo.gl/2aRDsh
  */
 
-importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
+importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/vue-to-do/precache-manifest.9a83ea7bd7f162d68b0909ad378d7aaa.js"
+  "/vue-to-do/precache-manifest.c15ffb38c34d7b2c84271b6c2e1d80e2.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "vue-to-do"});
 
-workbox.skipWaiting();
+workbox.core.skipWaiting();
 
 /**
  * The workboxSW.precacheAndRoute() method efficiently caches and responds to
@@ -27,5 +27,4 @@ workbox.skipWaiting();
  * See https://goo.gl/S9QRab
  */
 self.__precacheManifest = [].concat(self.__precacheManifest || []);
-workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
