@@ -39,8 +39,8 @@
                 v-for="todo in pending"
                 :key="todo.id"
                 :todo="todo"
-                @checkTodo="checkTodo"
-                @removeTodo="removeTodo"
+                @check-todo="checkTodo"
+                @remove-todo="removeTodo"
               />
             </draggable>
           </div>
@@ -61,8 +61,8 @@
                 v-for="todo in completed"
                 :key="todo.id"
                 :todo="todo"
-                @checkTodo="checkTodo"
-                @removeTodo="removeTodo"
+                @check-todo="checkTodo"
+                @remove-todo="removeTodo"
               />
             </draggable>
           </div>
@@ -72,8 +72,8 @@
       <transition name="slide">
         <AddTodo
           v-if="showAdd"
-          @addTodo="addTodo"
-          @toggleShowAdd="toggleShowAdd"
+          @add-todo="addTodo"
+          @toggle-show-add="toggleShowAdd"
         />
       </transition>
 
@@ -102,7 +102,7 @@ export default {
     LoadingIcon,
     Fab,
     AddTodo,
-    draggable
+    draggable,
   },
   data() {
     return { loading: true, showAdd: false };
@@ -115,7 +115,7 @@ export default {
       },
       set(todos) {
         this.setTodos({ type: "pending", todos });
-      }
+      },
     },
     completed: {
       get() {
@@ -123,11 +123,11 @@ export default {
       },
       set(todos) {
         this.setTodos({ type: "completed", todos });
-      }
+      },
     },
     hasNoTodos() {
       return !this.pending.length && !this.completed.length;
-    }
+    },
   },
   mounted() {
     this.getTodos().then(() => {
@@ -139,8 +139,8 @@ export default {
     ...mapMutations(["addTodo", "setTodos", "removeTodo", "checkTodo"]),
     toggleShowAdd() {
       this.showAdd = !this.showAdd;
-    }
-  }
+    },
+  },
 };
 </script>
 

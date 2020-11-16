@@ -31,11 +31,11 @@ export default {
   components: { Button, ChevronIcon, SavedIndicator },
   data() {
     return {
-      showAccount: false
+      showAccount: false,
     };
   },
   computed: {
-    ...mapState(["user"])
+    ...mapState(["user"]),
   },
   methods: {
     toggleShowAccount() {
@@ -48,8 +48,8 @@ export default {
       this.$store.dispatch("signOut").then(() => {
         this.$router.replace("login");
       });
-    }
-  }
+    },
+  },
 };
 </script>
 

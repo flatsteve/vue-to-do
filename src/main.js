@@ -1,5 +1,5 @@
 import Vue from "vue";
-import * as firebase from "firebase/app";
+import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
 import vClickOutside from "v-click-outside";
@@ -19,5 +19,5 @@ export const db = firebase.firestore();
 new Vue({
   router,
   store,
-  render: h => h(App)
+  render: (h) => h(App),
 }).$mount("#app");

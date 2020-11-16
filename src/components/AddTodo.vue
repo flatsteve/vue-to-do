@@ -32,21 +32,21 @@ export default {
   components: { Button, CloseIcon },
   data() {
     return {
-      description: ""
+      description: "",
     };
   },
   methods: {
     addTodo(e) {
       e.preventDefault();
 
-      this.$emit("addTodo", this.description);
+      this.$emit("add-todo", this.description);
       this.description = "";
-      this.$emit("toggleShowAdd");
+      this.$emit("toggle-show-add");
     },
     close() {
-      this.$emit("toggleShowAdd");
-    }
-  }
+      this.$emit("toggle-show-add");
+    },
+  },
 };
 </script>
 

@@ -17,22 +17,22 @@ import { mapMutations } from "vuex";
 
 import LoadingIcon from "../public/svg/loading.svg";
 
-import * as firebase from "firebase/app";
+import firebase from "firebase/app";
 
 export default {
   name: "App",
   components: { LoadingIcon },
   data() {
     return {
-      loading: true
+      loading: true,
     };
   },
   beforeCreate() {
-    firebase.auth().onAuthStateChanged(user => {
+    firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.setUser({
           id: user.uid,
-          email: user.email
+          email: user.email,
         });
 
         if (this.$router.name !== "todos") {
@@ -44,8 +44,8 @@ export default {
     });
   },
   methods: {
-    ...mapMutations(["setUser"])
-  }
+    ...mapMutations(["setUser"]),
+  },
 };
 </script>
 

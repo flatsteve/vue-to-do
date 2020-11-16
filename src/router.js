@@ -14,38 +14,38 @@ const router = new Router({
   routes: [
     {
       path: "*",
-      redirect: "login"
+      redirect: "login",
     },
     {
       path: "/",
-      redirect: "login"
+      redirect: "login",
     },
     {
       path: "/login",
       name: "login",
-      component: Login
+      component: Login,
     },
     {
       path: "/signup",
       name: "signup",
-      component: Signup
+      component: Signup,
     },
     {
       path: "/todos",
       name: "todos",
       component: Todos,
       meta: {
-        requiresAuth: true
-      }
-    }
-  ]
+        requiresAuth: true,
+      },
+    },
+  ],
 });
 
 router.beforeEach((to, from, next) => {
   const currentUser = store.state.user;
 
   const requiresAuth = to.matched.some(
-    routeRecord => routeRecord.meta.requiresAuth
+    (routeRecord) => routeRecord.meta.requiresAuth
   );
 
   if (requiresAuth && !currentUser) {

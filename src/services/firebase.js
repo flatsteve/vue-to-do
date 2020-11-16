@@ -5,5 +5,5 @@ export const firebaseConfig = {
   projectId: "vue-to-do-4fa82",
   storageBucket: "vue-to-do-4fa82.appspot.com",
   messagingSenderId: "620060105724",
-  appId: "1:620060105724:web:a699ea67cf75948ab07079"
+  appId: "1:620060105724:web:a699ea67cf75948ab07079",
 };

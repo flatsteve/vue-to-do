@@ -17,18 +17,18 @@ export default {
   name: "CustomCheckbox",
   props: {
     checked: {
-      type: Boolean
+      type: Boolean,
     },
     id: {
       default: "0",
-      type: String
-    }
+      type: String,
+    },
   },
   methods: {
     change(event) {
       this.$emit("checked", event.target.name);
-    }
-  }
+    },
+  },
 };
 </script>
 

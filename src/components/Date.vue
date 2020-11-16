@@ -15,21 +15,21 @@ export default {
   computed: {
     date() {
       return new Date().toLocaleDateString("en-UK", {
-        day: "numeric"
+        day: "numeric",
       });
     },
     day() {
       return new Date().toLocaleDateString("en-UK", {
-        weekday: "long"
+        weekday: "long",
       });
     },
     monthYear() {
       return new Date().toLocaleDateString("en-UK", {
         month: "short",
-        year: "numeric"
+        year: "numeric",
       });
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -15,8 +15,8 @@ import { mapState } from "vuex";
 export default {
   name: "SavedIndicator",
   computed: {
-    ...mapState(["saved"])
-  }
+    ...mapState(["saved"]),
+  },
 };
 </script>
 

@@ -46,7 +46,7 @@ export default {
       email: "",
       password: "",
       error: "",
-      loading: false
+      loading: false,
     };
   },
   methods: {
@@ -62,12 +62,12 @@ export default {
         .then(() => {
           this.$router.replace("todos");
         })
-        .catch(error => {
+        .catch((error) => {
           this.error = error.message;
           this.loading = false;
         });
-    }
-  }
+    },
+  },
 };
 </script>
 

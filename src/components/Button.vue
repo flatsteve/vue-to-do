@@ -15,13 +15,13 @@ export default {
   props: {
     onClick: {
       type: Function,
-      required: true
+      required: true,
     },
     loading: {
       type: Boolean,
-      required: false
-    }
-  }
+      required: false,
+    },
+  },
 };
 </script>
 

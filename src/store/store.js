@@ -11,9 +11,9 @@ Vue.use(Vuex);
 const mutationsToSaveToDB = [
   "setTodos",
   "addTodo",
-  "saveTodos",
+  "updateTodo",
   "checkTodo",
-  "removeTodo"
+  "removeTodo",
 ];
 
 const store = new Vuex.Store({
@@ -21,13 +21,13 @@ const store = new Vuex.Store({
     user: null,
     pendingTodos: [],
     completedTodos: [],
-    saved: false
+    saved: false,
   },
   mutations,
   actions,
   // Store the result of important todo mutations in the db for logged in users
   plugins: [
-    store => {
+    (store) => {
       let timeoutId;
 
       store.subscribe((mutation, state) => {
@@ -47,14 +47,14 @@ const store = new Vuex.Store({
                   store.commit("setSaved", false);
                 }, 2000);
               },
-              error => {
+              (error) => {
                 console.log(error);
               }
             );
         }
       });
-    }
-  ]
+    },
+  ],
 });
 
 export default store;

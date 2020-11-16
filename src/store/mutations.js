@@ -1,5 +1,5 @@
 function removeTodoFromList(state, { type, id }) {
-  state[`${type}Todos`] = state[`${type}Todos`].filter(todo => {
+  state[`${type}Todos`] = state[`${type}Todos`].filter((todo) => {
     return todo.id !== id;
   });
 }
@@ -14,7 +14,7 @@ export default {
     const pending = [];
     const complete = [];
 
-    todos.forEach(todo => {
+    todos.forEach((todo) => {
       if (todo.checked) {
         return complete.push(todo);
       }
@@ -28,14 +28,22 @@ export default {
   setTodos(state, { type, todos }) {
     state[`${type}Todos`] = todos;
   },
-  saveTodos() {
-    return false;
+  updateTodo(state, { todo: updateTodo, description }) {
+    const type = updateTodo.checked ? "completed" : "pending";
+
+    state[`${type}Todos`] = state[`${type}Todos`].map((todo) => {
+      if (todo.id === updateTodo.id) {
+        todo.description = description;
+      }
+
+      return todo;
+    });
   },
   addTodo(state, description) {
     state.pendingTodos.push({
       id: Date.now().toString(),
       description: description,
-      checked: false
+      checked: false,
     });
   },
   checkTodo(state, todo) {
@@ -59,5 +67,5 @@ export default {
   // UI mutations
   setSaved(state, value) {
     state.saved = value;
-  }
+  },
 };

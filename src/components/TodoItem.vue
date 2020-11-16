@@ -7,7 +7,7 @@
       <input
         v-if="edit"
         ref="editDescription"
-        v-model="todo.description"
+        v-model="description"
         type="text"
         @keyup.enter="editTodo(todo)"
         @blur="editTodo(todo)"
@@ -22,13 +22,13 @@
       <BinIcon
         v-show="todo.checked"
         class="todo-item__actions__delete"
-        @click="$emit('removeTodo', todo)"
+        @click="$emit('remove-todo', todo)"
       />
 
       <CustomCheckbox
         :id="todo.id"
         :checked="todo.checked"
-        @checked="$emit('checkTodo', todo)"
+        @checked="$emit('check-todo', todo)"
       />
     </div>
   </div>
@@ -43,14 +43,14 @@ export default {
   components: { CustomCheckbox, BinIcon },
   props: {
     todo: {
-      default: () => [],
-      type: [Array, Object]
-    }
+      type: Object,
+      required: true,
+    },
   },
   data() {
     return {
       edit: false,
-      editDescription: this.todo.description
+      description: this.todo.description,
     };
   },
   methods: {
@@ -64,13 +64,17 @@ export default {
     },
     editTodo(todo) {
       if (!todo.description) {
-        return this.$emit("removeTodo", todo);
+        return this.$emit("remove-todo", todo);
       }
 
-      this.$store.commit("saveTodos");
+      this.$store.commit("updateTodo", {
+        todo,
+        description: this.description,
+      });
+
       this.edit = false;
-    }
-  }
+    },
+  },
 };
 </script>
 

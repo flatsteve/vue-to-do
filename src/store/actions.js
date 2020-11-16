@@ -1,4 +1,4 @@
-import * as firebase from "firebase/app";
+import firebase from "firebase/app";
 import { db } from "@/main";
 
 export default {
@@ -23,19 +23,19 @@ export default {
       .doc(state.user.id)
       .get()
       .then(
-        doc => {
+        (doc) => {
           if (doc.exists) {
             const { data } = doc.data();
 
             commit("receiveTodos", data);
           }
         },
-        err => {
+        (err) => {
           console.log(err);
         }
       )
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
-  }
+  },
 };
