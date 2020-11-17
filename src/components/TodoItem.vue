@@ -13,9 +13,13 @@
         @blur="editTodo(todo)"
       />
 
-      <h4 v-else class="todo-item__description" @click="enableEditTodo">
-        {{ todo.description }}
-      </h4>
+      <h4
+        v-else
+        v-linkify
+        class="todo-item__description"
+        @click="enableEditTodo"
+        v-html="todo.description"
+      ></h4>
     </div>
 
     <div class="todo-item__actions">
@@ -35,12 +39,15 @@
 </template>
 
 <script>
+import linkify from "vue-linkify";
+
 import CustomCheckbox from "@/components/CustomCheckbox";
 import BinIcon from "../../public/svg/bin.svg";
 
 export default {
   name: "TodoItem",
   components: { CustomCheckbox, BinIcon },
+  directives: { linkify },
   props: {
     todo: {
       type: Object,
@@ -84,8 +91,12 @@ export default {
   background-color: $white;
   border-bottom: 1px solid lighten($blue, 25%);
   display: flex;
+  hyphens: auto;
   justify-content: space-between;
   padding: 1.25rem;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
 
   &:last-of-type {
     border-bottom: none;
