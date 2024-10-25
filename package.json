@@ -17,7 +17,7 @@
     "normalize.css": "^8.0.1",
     "register-service-worker": "^1.7.1",
     "v-click-outside": "^3.1.2",
-    "vue": "^2.6.12",
+    "vue": "^3.0.0",
     "vue-linkify": "^1.0.1",
     "vue-router": "^3.4.9",
     "vuedraggable": "^2.24.3",
